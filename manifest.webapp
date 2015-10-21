@@ -1,0 +1,16 @@
+{
+  "name": "Hitung Zakat",
+  "description": "English : Hitung Zakat is an application that aims to facilities Muslims in calculating zakat. Indonesian : Hitung Zakat merupakan aplikasi yang bertujuan untuk mempermudah umat muslim dalam menghitung zakat. Aplikasi ini memiliki fitur untuk menghitung zakat fitrah, zakat simpanan, zakat profesi, dan zakat niaga.",
+  "launch_path": "default.html",
+  "developer": {
+    "name": "Zayed Elfasa",
+    "url": "https://elfalinks.blogspot.com"
+  },
+
+  "permissions": [
+  ],
+
+  "icons": {
+    "128": "/img/icon.png"
+  }
+}

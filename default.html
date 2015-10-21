@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/transitions.css" rel="stylesheet">
+		<style>
+			body {
+				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+			}
+		</style>
+		
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	   	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	   	<script type="text/javascript" src="js/default.js"></script>
+	   
+	</head>
+	<body id="idBody" style="background-image:url('img/bg.jpg');">
+		<!--HEADER-->
+	    <div class="navbar navbar-fixed-top">
+		    <div class="navbar-inner">
+		    	<div class="container" style="width: auto; padding: 0 30px;">
+			    	<a class="brand">Hitung Zakat</a>
+			    	<ul class="nav pull-right">
+						<li><a id="idAbout"><img src="img/about.png" width="20px" height="20px"/></a></li>
+					</ul>
+			    </div>	
+		    </div>
+	    </div>
+
+	    <div id="idMenuUtama">
+	    	<p><button id="idZakatFitrah" class="btn btn-primary btn-block" type="button">Zakat Fitrah</button></p>
+	    	<p><button id="idZakatSimpanan" class="btn btn-primary btn-block" type="button">Zakat Simpanan 1 Tahun</button></p>
+	    	<p><button id="idZakatProfesi" class="btn btn-primary btn-block" type="button">Zakat Profesi</button></p>
+	    	<p><button id="idZakatNiaga" class="btn btn-primary btn-block" type="button">Zakat Niaga</button></p>
+	    </div>
+
+	    <div id="divAbout">
+			<p>
+				<center><img src="img/icon.png" alt="Lightbox Icon" width="100" height="100"></center>
+				<legend>Hitung Zakat</legend>
+			</p>
+			<p>
+				<font size="3">
+					Aplikasi ini bertujuan untuk mempermudah umat muslim ketika menghitung zakat. Aplikasi ini memiliki fitur untuk menghitung zakat fitrah, zakat simpanan, zakat profesi, dan zakat niaga. Selamat menunaikan zakat !
+				</font>
+				<br />
+				<small>Developer : Zayed Elfasa</small>
+			</p>
+    	</div>
+
+	    <div id="menuZakatFitrah">
+	    	<form name="formProfesi">
+	    		<fieldset>
+	    			<legend>Zakat Fitrah</legend>		
+					<font size="3px">1 sha' zakat fitrah setara dengan 2,5 kg beras.</font>
+					<br />
+					<br />
+					<font size="3px">Harga Beras Sekarang / makanan pokok lokal per-Kilogram : </font>
+					<input placeholder="" class="input-block-level search-query" required="" type="number" id="idBeras" name = "idBeras" onkeyup = "zakatfitrah()">
+					<br />
+					<br />
+					<font size="3px">Jumlah zakat fitrah yang harus dibayar yaitu : </font>
+					</br>
+					<input readonly="" placeholder="" class="input-block-level search-query" required="" type="text" id="idHasil1" value="Rp 0,-">
+					<br />
+					<br />
+					<br />
+					<br />
+				</fieldset>
+			</form>
+    	</div>
+
+	    <div id="menuZakatSimpanan">
+	    	<form>
+	    		<fieldset>
+	    			<legend>Zakat Simpanan satu tahun</legend>
+					<font size="3px">Uang Tunai, Tabungan, Deposito atau sejenisnya </font>
+					<input class="input-block-level search-query" onkeyup = "zakatsatutahun()" type="number" required="" placeholder="" id="idTabungan">
+					<br />
+					<br />
+					<font size="3px">Saham atau surat-surat berharga lainnya </font>
+					<input class="input-block-level search-query" onkeyup = "zakatsatutahun()" type="number" required="" placeholder="" id="idSaham">
+					<br />
+					<br />
+					<font size="3px">Barang Properti (tidak termasuk rumah saat ini)</font>
+					<input class="input-block-level search-query" onkeyup = "zakatsatutahun()" type="number" required="" placeholder="" id="idRealEstate">
+					<br />
+					<br />
+					<font size="3px">Emas, perak, permata atau sejenisnya</font>
+					<input class="input-block-level search-query" onkeyup = "zakatsatutahun()" type="number" required="" placeholder="" id="idEmas">
+					<br />
+					<br />
+					<font size="3px">Nilai harga mobil (lebih dari keperluan keluarga)</font>
+					<input class="input-block-level search-query" onkeyup = "zakatsatutahun()" type="number" required="" placeholder="" id="idMobil">
+					<br />
+					<br />
+					<font size="3px">Hutang pribadi yang jatuh tempo dalam tahun ini</font>
+					<input class="input-block-level search-query" onkeyup = "zakatsatutahun()" type="number" required="" placeholder="" id="idHutang">
+					<br />
+					<br />
+					<font size="3px">Total zakat simpanan 1 tahun :</font>
+					<input class="input-block-level search-query" readonly="" placeholder="" required="" type="text" id="idHasil2" value="Rp 0,-">
+					<br />
+					<br />
+					<br />
+					<br />
+				</fieldset>	
+			</form>
+	    </div>
+
+	    <div id="menuZakatProfesi">
+	    	<form name="formProfesi">
+	    		<fieldset>
+	    			<legend>Zakat Profesi</legend>		
+					<font size="3px">Pendapatan/Gaji Perbulan setelah dipotong pajak</font>
+					<input class="input-block-level search-query" onkeyup = "zakatprofesi()" type="number" required="" placeholder="" id="nameGajiPerbulan">
+					<br />
+					<br />
+					<font size="3px">Bonus/Pendapatan lain-lain selama satu tahun</font>
+					<input class="input-block-level search-query" onkeyup = "zakatprofesi()" placeholder="" required="" type="number" id="nameBonusSatuTahun">
+					<br />
+					<br />
+					<font size="3px">Rata-rata pengeluaran rutin perbulan</font>
+					<input class="input-block-level search-query" onkeyup = "zakatprofesi()" placeholder="" required="" type="number" id="nameRataRataPerbulan">
+					<br />
+					<br />
+					<font size="3px">Pengeluaran lainnya selama satu tahun</font>
+					<input class="input-block-level search-query" onkeyup = "zakatprofesi()" placeholder="" required="" type="number" id="namePengeluaranSatuTahun">
+					<br />
+					<br />
+					<font size="3px">Jumlah zakat profesi pertahun : </font>
+					<input class="input-block-level search-query" readonly="" placeholder="" required="" type="text" id="idHasil3" value="Rp 0,-">
+					<br />
+					<br />
+					<br />
+					<br />
+				</fieldset>	
+			</form>
+	    </div>
+
+	    <div id="menuZakatNiaga">
+	    	<form>
+	    		<fieldset>
+	    			<legend>Zakat Niaga</legend>		
+					<font size="3px">Nilai kekayaan perusahaan (uang tunai, bank, asset, dll)</font>
+					<input class="input-block-level search-query" onkeyup = "zakatniaga()" type="number" required="" placeholder="" id="idKekayaanPerusahaan">
+					<br />
+					<br />
+					<font size="3px">Utang perusahaan jatuh tempo</font>
+					<input class="input-block-level search-query" onkeyup = "zakatniaga()" type="number" required="" placeholder="" id="idUtangPerusahaan">
+					<br />
+					<br />
+					<font size="3px">Komposisi dalam kepemilikan (dalam persen)</font>
+					<input class="input-block-level search-query" onkeyup = "zakatniaga()" type="number" required="" placeholder="" id="idKomposisiKepemilikan">
+					<br />
+					<br />
+					<font size="3px">Jumlah zakat atas harta usaha yang wajib dibayar pertahun : </font>
+					<input class="input-block-level search-query" readonly="" placeholder="" required="" type="text" id="idHasil4" value ="Rp 0,-">
+					<br />
+					<br />
+					<br />
+					<br />
+				</fieldset>		
+			</form>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$("#idKomposisiKepemilikan").keyup(function(){
+						var len = this.value.length;
+						if(len >= 3) {
+							this.value = this.value.substring(0,3);
+							//$("#idKomposisiKepemilikan").attr("readonly", "");
+						}
+
+						var kekayaanPerushaan = document.getElementById("idKekayaanPerusahaan").value;
+						var utangPerushaan = document.getElementById("idUtangPerusahaan").value;
+						var komposisiKepemilikan = document.getElementById("idKomposisiKepemilikan").value;
+
+						var satu = parseFloat(komposisiKepemilikan/100);
+						var dua = parseInt(kekayaanPerushaan)-parseInt(utangPerushaan);
+						var jmlBersihHartaUsaha = satu * dua ;
+
+						var totalZakat1 = parseInt(0.025 * jmlBersihHartaUsaha);
+						var hasil3 = document.getElementById("idHasil4");
+						
+						if(isNaN(totalZakat1)){
+							hasil3.value = "Rp 0,-";
+						}
+
+						else {
+							hasil3.value = "Rp "+totalZakat1+",-";
+						}
+					});
+				});
+			</script>
+	    </div>
+	    
+	    <!--FOOTER-->
+	    <div id ="idFooter" class="navbar navbar-fixed-bottom">
+		    <div class="navbar-inner">
+		    	<div class="container" style="width: auto; padding: 0 30px;">
+			    	<a class="brand" href="#"><font size="3px">Developed By : Zayed Elfasa</font></a>
+			    </div>	
+		    </div>
+	    </div>
+
+	     <!--FOOTER2-->
+	    <div id="idFooter2" class="navbar navbar-fixed-bottom">
+		    <div class="navbar-inner">
+		    	<div class="container" style="width: auto; padding: 0 30px;">
+			    	<a class="brand" href="#"><font size="3px"><<< Kembali</font></a>
+		    </div>	
+		</div>
+	</body>
+	<script type="text/javascript">
+		function zakatfitrah() {
+			var hargaberas = document.getElementById("idBeras").value;
+
+			var totalZakat = parseInt(hargaberas*2.5);
+			var hasil1 = document.getElementById("idHasil1");
+
+			if(isNaN(totalZakat)) {
+				hasil1.value = "Rp 0,-";
+			}
+
+			else {
+				hasil1.value = "Rp "+totalZakat+",-";
+			}
+		}
+
+		function zakatsatutahun() {
+			var tabungan = document.getElementById("idTabungan").value;
+			var saham = document.getElementById("idSaham").value;
+			var realestate = document.getElementById("idRealEstate").value;
+			var emas = document.getElementById("idEmas").value;
+			var mobil = document.getElementById("idMobil").value;
+			var hutang = document.getElementById("idHutang").value;
+
+			var jumlahHartaSimpanan = parseInt(tabungan) + parseInt(saham) + parseInt(realestate) + parseInt(emas) + parseInt(mobil);
+			var hartasimpanan = parseInt(jumlahHartaSimpanan) - parseInt(hutang);
+			var zakatTotal = parseInt(hartasimpanan*0.025);
+
+			var hasil2 = document.getElementById("idHasil2");
+
+			if(isNaN(zakatTotal)) {
+				hasil2.value = "Rp 0,-";
+			}
+
+			else {
+				hasil2.value = "Rp "+zakatTotal+",-";
+			}
+		}
+
+		function zakatprofesi() {
+			//development selanjutnya pakai input type hidden
+
+			var gajiSatuTahun = document.getElementById("nameGajiPerbulan").value;
+			var bonusSatuTahun = document.getElementById("nameBonusSatuTahun").value;
+			//var hasil = document.getElementById("idHasil");
+			//hasil.value = parseInt(gajiSatuTahun)+parseInt(bonusSatuTahun);
+			var rataRataPengeluaranPerbulan = document.getElementById("nameRataRataPerbulan").value;
+			var pengeluaranPertahun = document.getElementById("namePengeluaranSatuTahun").value;
+			
+			//get operation
+			var totalPendapatanPertahun = parseInt(12*gajiSatuTahun)+parseInt(bonusSatuTahun);
+			var totalPengeluaranPertahun = parseInt(12*rataRataPengeluaranPerbulan)+parseInt(pengeluaranPertahun);
+			var penghasilanKenaZakat = parseInt(totalPendapatanPertahun)-parseInt(totalPengeluaranPertahun);
+			
+			var zakat = parseInt(penghasilanKenaZakat*0.025);
+			var hasil4 = document.getElementById("idHasil3");
+
+			if(isNaN(zakat)) {
+				hasil4.value = "Rp 0,-";
+			}	
+
+			else {
+				hasil4.value = 	"Rp "+zakat+",-";	
+			}
+			//document.getElementById("hasil").innerHTML=total;
+		}
+	</script>
+</html>
